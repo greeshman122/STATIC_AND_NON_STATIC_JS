@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static and Non-Static Methods Example</title>
+</head>
+
+<body>
+    <h1>Static and Non-Static Methods with Class Inheritance</h1>
+    <div id="output"></div>
+
+    <script>
+        // Parent class
+            class ParentClass {
+                // Static method
+                static staticMethod() {
+                    return "This is a static method from ParentClass";
+                }
+
+                // Non-static (instance) method
+                instanceMethod() {
+                    return "This is an instance method from ParentClass";
+                }
+            }
+
+            // Child class inheriting from ParentClass
+            class ChildClass extends ParentClass {
+                callMethods() {
+                    // Accessing the static method from the parent class
+                    const staticMessage = ParentClass.staticMethod();
+                    // Accessing the instance method from the parent class
+                    const instanceMessage = this.instanceMethod();
+                    return { staticMessage, instanceMessage };
+                }
+            }
+
+            // Creating an instance of ChildClass
+            const child = new ChildClass();
+            const messages = child.callMethods();
+
+            // Displaying the messages in the HTML page
+            document.getElementById('output').innerHTML = `
+            <p>${messages.staticMessage}</p>
+            <p>${messages.instanceMessage}</p>
+        `;
+    </script>
+</body>
+
+</html>
